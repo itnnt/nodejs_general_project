@@ -1,0 +1,4 @@
+{
+  "presets": ["@babel/preset-flow"]
+}
+./node_modules/.bin/babel src/ -d lib/
