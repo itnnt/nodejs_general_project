@@ -6,7 +6,9 @@ const config = {
     server: 'dmpfra.vinceredev.com',
     database: 'oakstone',
     options: {
-        //encrypt: true // Use this if you're on Windows Azure
+        max: 10,
+        min: 0,
+        idleTimeoutMillis: 30000
     }
 }
 
@@ -29,7 +31,7 @@ sql.connect(config).then(() => {
     process.exit()
 })
 
-sql.on('error', err=>{
+sql.on('error', err => {
     console.error("================= ERROR ================")
     console.error(err)
 })
