@@ -3,19 +3,17 @@ const sql = require('mssql')
 const config = {
     user: 'sa',
     password: '123$%^qwe',
-    server: 'dmpfra.vinceredev.com', 
-    database: 'strivesales', 
+    server: 'dmpfra.vinceredev.com',
+    database: 'oakstone',
     options: {
         //encrypt: true // Use this if you're on Windows Azure
     }
 }
 
-(async function () {
+async function getData() {
     try {
         let pool = await sql.connect(config)
         let result1 = await pool.request()
-            // .input('input_parameter', sql.Int, value)
-            // .query('select * from mytable where id = @input_parameter')
             .query(`
             select
             c.*
@@ -26,11 +24,11 @@ const config = {
             left join Locations l on dl.LocationId = l.ItemId
             left join Users u on c.OwnerId = u.ItemId
             `)
-            
+
         console.dir(result1)
-    
+
         // Stored procedure
-        
+
         // let result2 = await pool.request()
         //     .input('input_parameter', sql.Int, value)
         //     .output('output_parameter', sql.VarChar(50))
@@ -38,11 +36,16 @@ const config = {
         // console.dir(result2)
     } catch (err) {
         // ... error checks
-        console.log('There are some errors')
+        console.error('There are some errors', err)
     }
-})()
- 
+}
+
+getData()
 sql.on('error', err => {
     // ... error handler
     console.log('Error on sql')
 })
+
+
+
+
