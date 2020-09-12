@@ -16,7 +16,7 @@
     "dataframe-js": "^1.4.3",
     "express": "^4.17.1",
     "mssql": "^5.1.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
